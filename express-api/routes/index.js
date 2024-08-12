@@ -4,7 +4,7 @@ const multer = require("multer");
 
 const uploadDestination = "uploads";
 
-// Showing where to store the data
+// Showing where to store files
 const storage = multer.diskStorage({
   destination: uploadDestination,
   filename: function (req, file, next) {
