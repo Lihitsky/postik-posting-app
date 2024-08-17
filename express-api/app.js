@@ -16,7 +16,7 @@ app.use(cookieParser());
 app.set("view engine", "jade");
 
 // static files from folder 'uploads'
-app.use("./uploads", express.static("uploads"));
+app.use("/uploads", express.static("uploads"));
 
 app.use("/api", require("./routes"));
 
