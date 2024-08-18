@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  postik-express-app:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postik-db
+    environment:
+      DATABASE_URL: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@postik-db:27017/mydatabase?authSource=admin&directConnection=true"
+    restart: unless-stopped
+
+  postik-db:
+    image: prismagraphql/mongo-single-replica:5.0.3
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    restart: unless-stopped
