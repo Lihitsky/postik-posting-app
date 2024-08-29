@@ -34,6 +34,6 @@ export const Button: React.FC<Props> = ({
       className={className}
       type={type}
       fullWidth={fullWidth}
-    ></NextButton>
+    >{children}</NextButton>
   )
 }
