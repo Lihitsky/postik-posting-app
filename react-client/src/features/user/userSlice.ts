@@ -56,4 +56,4 @@ export const selectIsAuthentificated = (state: RootState) =>
 
 export const selectCurrent = (state: RootState) => state.user.current
 
-export const selectUser = (state: RootState) => state.user
+export const selectUser = (state: RootState) => state.user.user
