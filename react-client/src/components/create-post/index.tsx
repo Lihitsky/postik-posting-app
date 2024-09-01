@@ -1,5 +1,8 @@
 import React from "react"
-import { useCreatePostMutation, useLazyGetAllPostsQuery } from "../../app/services/postsApi"
+import {
+  useCreatePostMutation,
+  useLazyGetAllPostsQuery,
+} from "../../app/services/postsApi"
 import { Controller, useForm } from "react-hook-form"
 import { Button, Textarea } from "@nextui-org/react"
 import { ErrorMessage } from "../error-message"
@@ -18,7 +21,7 @@ export const CreatePost = () => {
 
   const error = errors?.post?.message as string
 
-  const onSubmit = handleSubmit(async (data) => {
+  const onSubmit = handleSubmit(async data => {
     try {
       await createPost({ content: data.post }).unwrap()
       setValue("post", "")
