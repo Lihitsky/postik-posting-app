@@ -87,7 +87,7 @@ const UserController = {
                 return res.status(404).json({ error: "User not defined"})
             }
 
-            const isFollowing = await prisma.user.findFirst({
+            const isFollowing = await prisma.follows.findFirst({
                 where: {
                     AND: [
                         { followerId: userId },
