@@ -73,7 +73,7 @@ export const Card: React.FC<Props> = ({
         await triggerGetAllPosts().unwrap()
         break
       case "current-post":
-        await triggerGetAllPosts().unwrap()
+        await triggerGetPostById(id).unwrap()
         break
       case "comment":
         await triggerGetPostById(id).unwrap()
@@ -116,7 +116,7 @@ export const Card: React.FC<Props> = ({
         ? await unlikePost(id).unwrap()
         : await likePost({ postId: id }).unwrap()
 
-      await triggerGetPostById(id).unwrap()
+      await refetchPosts()
     } catch (error) {
       if (hasErrorField(error)) {
         setError(error.data.error)
