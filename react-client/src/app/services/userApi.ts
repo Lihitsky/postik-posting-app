@@ -35,7 +35,7 @@ export const userApi = api.injectEndpoints({
             method: "GET",
         })
     }),
-    updateUserById: builder.query<User, { userData: FormData, id: string }>({
+    updateUserById: builder.mutation<User, { userData: FormData, id: string }>({
         query: ({ userData, id}) => ({
             url: `/users/${id}`,
             method: "PUT",
@@ -52,7 +52,7 @@ export const {
     useLazyCurrentQuery,
     useGetUserByIdQuery,
     useLazyGetUserByIdQuery,
-    useUpdateUserByIdQuery
+    useUpdateUserByIdMutation
 } = userApi;
 
 export const {
