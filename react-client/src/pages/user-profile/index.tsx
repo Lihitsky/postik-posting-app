@@ -22,6 +22,7 @@ import { CiEdit } from "react-icons/ci"
 import { ProfileInfo } from "../../components/profile-info"
 import { formatToClientDate } from "../../utils/format-to-client-date"
 import { CountInfo } from "../../components/count-info"
+import { EditProfile } from "../../components/edit-profile"
 
 export const UserProfile = () => {
   const { id } = useParams<{ id: string }>()
@@ -55,6 +56,18 @@ export const UserProfile = () => {
     } catch (error) {}
   }
 
+  const handleClose = async () => {
+    try {
+      if (id) {
+        await triggerGetUserByIdQuery(id)
+        await triggerCurrentQuery()
+        onClose() 
+      }
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   if (!data) {
     return null
   }
@@ -68,7 +81,6 @@ export const UserProfile = () => {
             src={`${BASE_URL}${data.avatarUrl}`}
             alt={data.name}
             width={200}
-            height={200}
             className="border-4 border-white"
           />
           <div className="flex flex-col text-2xl font-bold gap-4 item-center">
@@ -90,7 +102,9 @@ export const UserProfile = () => {
                 {data.isFollowing ? "Unsubscribe" : "Subscribe"}
               </Button>
             ) : (
-              <Button endContent={<CiEdit />}>Edit Profile</Button>
+              <Button endContent={<CiEdit />} onClick={() => onOpen()}>
+                Edit Profile
+              </Button>
             )}
           </div>
         </Card>
@@ -99,7 +113,7 @@ export const UserProfile = () => {
           <ProfileInfo title="Location" info={data.location} />
           <ProfileInfo
             title="Date of Birth"
-            info={formatToClientDate(data.createdAt)}
+            info={formatToClientDate(data.dateOfBirth)}
           />
           <ProfileInfo title="About me" info={data.bio} />
 
@@ -109,6 +123,7 @@ export const UserProfile = () => {
           </div>
         </Card>
       </div>
+      <EditProfile isOpen={isOpen} onClose={handleClose} user={data} />
     </>
   )
 }
