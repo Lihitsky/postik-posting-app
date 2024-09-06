@@ -6,6 +6,7 @@ services:
       - '3000:3000'
     depends_on:
       - postik-db
+      - postik-react-app
     environment:
       DATABASE_URL: "mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@postik-db:27017/mydatabase?authSource=admin&directConnection=true"
     restart: unless-stopped
@@ -18,3 +19,8 @@ services:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
     restart: unless-stopped
+
+  postik-react-app:
+    build: ../react-client
+    ports:
+      - '80:80'
