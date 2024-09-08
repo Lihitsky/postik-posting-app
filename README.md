@@ -1,117 +1,135 @@
-Postik
-Postik is a web application for posting ideas and content, built using Node.js on the backend and React on the frontend. This project is designed to provide an easy and intuitive way to share posts and collaborate on ideas. It uses Express.js for the server-side API and Prisma for database management, along with a modern frontend stack powered by React and Vite.
+# Postik
 
-Table of Contents
-Features
-Tech Stack
-Installation
-Usage
-Docker Setup
-Environment Variables
-Scripts
-Contributing
-License
-Features
-User Authentication: Secure user authentication using JWT and bcrypt.
-Post Management: Create, read, update, and delete (CRUD) functionality for posts.
-Responsive UI: Modern and responsive user interface built with React and Tailwind CSS.
-RESTful API: Backend API built with Express.js for handling post and user data.
-Database Integration: MongoDB as the database, managed through Prisma ORM.
-Containerized Deployment: Docker setup for easy deployment and scalability.
-Tech Stack
-Backend
-Node.js: JavaScript runtime environment.
-Express.js: Web framework for Node.js.
-Prisma: Database ORM for Node.js.
-MongoDB: NoSQL database.
-Frontend
-React: JavaScript library for building user interfaces.
-Vite: Fast build tool for modern web projects.
-Tailwind CSS: Utility-first CSS framework.
-Redux: State management for React applications.
-DevOps
-Docker: Containerization for scalable deployment.
-Docker Compose: Tool for defining and running multi-container Docker applications.
-Installation
-To get started with Postik, you need to set up both the backend (Express API) and frontend (React app).
+**Postik** is a web application designed for posting and sharing ideas. Built using Node.js for the backend and React for the frontend, Postik provides a seamless experience for users to share their thoughts, ideas, and creativity with the world.
 
-Prerequisites
-Node.js and npm installed.
-Docker and Docker Compose installed.
-Clone the Repository
-bash
-Copy code
-git clone https://github.com/yourusername/postik.git
-cd postik
-Install Backend Dependencies
-Navigate to the backend directory and install dependencies:
+## Table of Contents
 
-bash
-Copy code
-cd server
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Environment Variables](#environment-variables)
+- [Docker Setup](#docker-setup)
+- [License](#license)
+
+## Features
+
+- **User Authentication**: Secure user registration and login with JWT and Bcrypt.
+- **Post Creation and Management**: Create, edit, delete, and view posts.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Redux Toolkit for State Management**: Efficient and scalable state management for React.
+- **Integration with MongoDB**: Database support for data storage and management.
+- **Custom UI Components**: Built using `@nextui-org/react` for a modern and sleek UI.
+
+## Tech Stack
+
+### Backend
+
+- **Node.js** with **Express.js**
+- **Prisma ORM**
+- **MongoDB**
+- **JWT** for authentication
+- **Multer** for handling file uploads
+
+### Frontend
+
+- **React** with **Vite**
+- **Redux Toolkit** for state management
+- **TailwindCSS** for styling
+- **React Router** for routing
+- **Framer Motion** for animations
+
+## Installation
+
+To get started with Postik, follow the steps below:
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- Node.js (v16.x or higher)
+- Docker and Docker Compose
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Lihitsky/postik-posting-app.git
+cd postik-posting-app
+```
+
+### Install Backend Dependencies
+```bash
+cd express-api
 npm install
-Install Frontend Dependencies
-Navigate to the frontend directory and install dependencies:
+```
 
-bash
-Copy code
+### Install Frontend Dependencies
+```bash
 cd ../react-client
 npm install
-Usage
-Running the Application Locally
-Backend: Start the Express server from the server directory:
+```
 
-bash
-Copy code
-cd server
+# Usage
+
+## Running Locally
+
+### 1. Start the Express server:
+```bash
+cd express-api
 npm run dev
-Frontend: Start the React development server from the react-client directory:
+```
 
-bash
-Copy code
+### 2. Start the React application:
+```bash
 cd ../react-client
 npm run dev
-The backend will be running on http://localhost:3000, and the frontend will be running on http://localhost:5173.
+```
 
-Docker Setup
-You can also run the entire application using Docker. Ensure Docker and Docker Compose are installed on your system.
+# Running with Docker
 
-Build and Run the Docker Containers
-Navigate to the backend directory where the docker-compose.yml file is located.
+### Ensure you are in the root directory where the docker-compose.yml file is located and run:
 
-Run the following command to build and start the containers:
-
-bash
-Copy code
+```bash
 docker-compose up --build
-This command will spin up the following services:
+```
 
-postik-express-app: The backend Express application.
-postik-db: MongoDB database.
-postik-react-app: The frontend React application.
-Stopping the Containers
-To stop and remove the containers, run:
+### This will start the backend API, MongoDB, and frontend React app.
 
-bash
-Copy code
-docker-compose down
-Environment Variables
-Make sure to set up a .env file in the server directory with the following variables:
+# Environment Variables
 
-env
-Copy code
+## Create a .env file in the express-api directory and provide the following variables:
+
+```bash
 DATABASE_URL="mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@localhost:27017/mydatabase?authSource=admin&directConnection=true"
-MONGO_INITDB_ROOT_USERNAME=admin
-MONGO_INITDB_ROOT_PASSWORD=admin123
-SECRET_KEY="vN9fS1hz7b2kmC3iQsXdW8rLY7aOdT9r2HjP4g6vKcMlJ2mSpVtRwQ8zFcUkYzPi"
-Scripts
-Backend
-npm run start: Start the server.
-npm run dev: Start the server with nodemon for hot-reloading.
-Frontend
-npm run dev: Start the development server.
-npm run build: Build the project for production.
-npm run preview: Preview the production build.
-npm run test: Run tests using Vitest.
-npm run lint: Run ESLint to check for linting errors.
-npm run format: Format the code with Prettier.
+MONGO_INITDB_ROOT_USERNAME="name"
+MONGO_INITDB_ROOT_PASSWORD="pasword"
+SECRET_KEY="secret-key"
+```
+
+# Docker Setup
+
+### The docker-compose.yml file is provided to set up the development environment easily.
+
+### Services
+
+postik-express-app: Runs the Express server.
+postik-db: MongoDB container with single-replica setup.
+postik-react-app: React frontend container.
+
+To start all services, run:
+
+```bash
+docker-compose up --build
+```
+
+### Stopping Services
+
+To stop all running containers:
+
+```bash
+docker-compose down
+```
+
+### License
+
+## This project is licensed under the MIT License. See the LICENSE file for more details.
