@@ -69,35 +69,35 @@ cd ../react-client
 npm install
 ```
 
-# Usage
+## Usage
 
-## Running Locally
+### Running Locally
 
-### 1. Start the Express server:
+1. Start the Express server:
 ```bash
 cd express-api
 npm run dev
 ```
 
-### 2. Start the React application:
+2. Start the React application:
 ```bash
 cd ../react-client
 npm run dev
 ```
 
-# Running with Docker
+### Running with Docker
 
-### Ensure you are in the root directory where the docker-compose.yml file is located and run:
+Ensure you are in the root directory where the docker-compose.yml file is located and run:
 
 ```bash
 docker-compose up --build
 ```
 
-### This will start the backend API, MongoDB, and frontend React app.
+This will start the backend API, MongoDB, and frontend React app.
 
-# Environment Variables
+## Environment Variables
 
-## Create a .env file in the express-api directory and provide the following variables:
+Create a .env file in the express-api directory and provide the following variables:
 
 ```bash
 DATABASE_URL="mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@localhost:27017/mydatabase?authSource=admin&directConnection=true"
@@ -106,15 +106,15 @@ MONGO_INITDB_ROOT_PASSWORD="pasword"
 SECRET_KEY="secret-key"
 ```
 
-# Docker Setup
+## Docker Setup
 
-### The docker-compose.yml file is provided to set up the development environment easily.
+The docker-compose.yml file is provided to set up the development environment easily.
 
 ### Services
 
-postik-express-app: Runs the Express server.
-postik-db: MongoDB container with single-replica setup.
-postik-react-app: React frontend container.
+- postik-express-app: Runs the Express server.
+- postik-db: MongoDB container with single-replica setup.
+- postik-react-app: React frontend container.
 
 To start all services, run:
 
@@ -130,6 +130,6 @@ To stop all running containers:
 docker-compose down
 ```
 
-### License
+## License
 
-## This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the **MIT License**. See the LICENSE file for more details.
